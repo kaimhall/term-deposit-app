@@ -1,0 +1,26 @@
+{% extends "design.html" %} {% block head %} {% endblock %} {% block content %}
+<h2>Predict buying</h2>
+
+<h3>Your Selections:</h3>
+<ul>
+  <li>Job: {{job}}</li>
+</ul>
+
+<h2>Model Predicts...</h2>
+...
+<b> {{"${:,.2f}".format(pred_final)}} </b>
+
+<p style="font-size: 12px">
+  If combination of values is extremely rare/unlikely in training data, model
+  may return NA.
+</p>
+
+<div id="tester" style="width: 900px; height: 450px"></div>
+
+<script>
+  TESTER = document.getElementById("tester");
+  var GRAPH = "{{ graphJSON | safe }}";
+
+  Plotly.plot(TESTER, GRAPH, {});
+</script>
+{% endblock %}

@@ -1,0 +1,13 @@
+python == 3.10
+pandas
+numpy
+scikit-learn
+matplotlib
+pip
+seaborn
+joblib
+voila
+ipython
+jupyter
+ipywidgets
+pillow

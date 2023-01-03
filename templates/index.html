@@ -1,0 +1,42 @@
+{% extends "design.html" %} {% block content %}
+<h2>Predict term deposit</h2>
+Model uses several characteristics in order to access if the product would be
+subscribed.
+
+<ul style="line-height: 1.5">
+  <li>Job title</li>
+  <li>marital status</li>
+  <li>Does client have credit in default)</li>
+  <li>Does client have housing loan</li>
+  <li>Outcome of the previous marketing campaign</li>
+</ul>
+
+Using these features, Support Vector Machine tries to predict, has the client
+subscribed a term deposit. Try it and see!
+
+<hr />
+<h2>Enter your choices...</h2>
+
+<form action="/result">
+  <div class="panel">
+    <ul>
+      <li>
+        Job:
+        <select name="job" method="GET" action="/">
+          {% for jobs in job %}
+          <option value="{{jobs}}" selected>{{jobs}}</option>
+          " {% endfor %}
+        </select>
+      </li>
+    </ul>
+  </div>
+
+  <div style="margin-bottom: 2rem">
+    <input type="submit" value="Submit" class="button" />
+    <input type="reset" value="Reset Values" class="button" />
+  </div>
+</form>
+
+<hr />
+<p><b>Model R^2</b>: {{ modscore }}</p>
+{% endblock %}
