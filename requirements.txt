@@ -1,12 +1,8 @@
 pandas
-numpy
 scikit-learn
 matplotlib
 pip
-seaborn
 joblib
-voila
-ipython
-jupyter
-ipywidgets
 pillow
+matplotlib
+Flask
