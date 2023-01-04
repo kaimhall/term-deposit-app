@@ -1,7 +1,8 @@
 {% extends "design.html" %} {% block content %}
-<h2>Predict term deposit</h2>
-Model uses several characteristics in order to access if the product would be
-subscribed.
+<h2>Term deposit prediction</h2>
+This model uses several lead characteristics to assess if a banking product, ie
+term deposit,<br />
+would be subscribed:
 
 <ul style="line-height: 1.5">
   <li>Job title</li>
@@ -10,12 +11,15 @@ subscribed.
   <li>Does client have housing loan</li>
   <li>Outcome of the previous marketing campaign</li>
 </ul>
-
-Using these features, Support Vector Machine tries to predict, has the client
-subscribed a term deposit. Try it and see!
-
+<p>
+  Using these features, <strong>Support Vector Machine</strong> predicts if the
+  client subscribes a term deposit.
+</p>
 <hr />
-<h2>Enter your choices...</h2>
+<p>
+  <h3>Predict</h3>
+  Select your feature values:
+</p>
 
 <form action="/result">
   <div class="panel">
@@ -23,8 +27,40 @@ subscribed a term deposit. Try it and see!
       <li>
         Job:
         <select name="job" method="GET" action="/">
-          {% for jobs in job %}
-          <option value="{{jobs}}" selected>{{jobs}}</option>
+          {% for j in job %}
+          <option value="{{j}}" selected>{{j}}</option>
+          " {% endfor %}
+        </select>
+      </li>
+      <li>
+        marital status:
+        <select name="marital" method="GET" action="/">
+          {% for m in marital %}
+          <option value="{{m}}" selected>{{m}}</option>
+          " {% endfor %}
+        </select>
+      </li>
+      <li>
+        default status:
+        <select name="default" method="GET" action="/">
+          {% for d in default %}
+          <option value="{{d}}" selected>{{d}}</option>
+          " {% endfor %}
+        </select>
+      </li>
+      <li>
+        housing:
+        <select name="housing" method="GET" action="/">
+          {% for h in housing %}
+          <option value="{{h}}" selected>{{h}}</option>
+          " {% endfor %}
+        </select>
+      </li>
+      <li>
+        poutcome:
+        <select name="poutcome" method="GET" action="/">
+          {% for p in poutcome %}
+          <option value="{{p}}" selected>{{p}}</option>
           " {% endfor %}
         </select>
       </li>
@@ -36,7 +72,5 @@ subscribed a term deposit. Try it and see!
     <input type="reset" value="Reset Values" class="button" />
   </div>
 </form>
-
 <hr />
-<p><b>Model R^2</b>: {{ modscore }}</p>
 {% endblock %}

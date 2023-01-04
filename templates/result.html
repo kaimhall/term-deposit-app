@@ -1,26 +1,46 @@
 {% extends "design.html" %} {% block head %} {% endblock %} {% block content %}
-<h2>Predict buying</h2>
-
-<h3>Your Selections:</h3>
+<h2>Results</h2>
+<p>You selected the features below for the lead:</p>
 <ul>
-  <li>Job: {{job}}</li>
+  <li>Job = {{job}}</li>
+  <li>Marital = {{marital}}</li>
+  <li>Default = {{default}}</li>
+  <li>Housing = {{housing}}</li>
+  <li>Poutcome = {{poutcome}}</li>
 </ul>
+<hr />
+<p>
+  <p>
+    <strong>Prediction:</strong> <i>A lead with above characteristics {{pred_fnl}}</i> 
+  </p>
+  <p>
+    Chart below displays data distribution for dataset and selection based on job and poutcome.<br>
+    Model accuracy is: 0.88
+  </p>
+</p>
+<hr>
 
-<h2>Model Predicts...</h2>
-...
-<b> {{"${:,.2f}".format(pred_final)}} </b>
+<div id="plot" style="width:650px;height:400px;"></div>
 
-<p style="font-size: 12px">
-  If combination of values is extremely rare/unlikely in training data, model
-  may return NA.
+<p>
+  <small>
+    *disclaimer: model is only a toy version for prototyping. 
+    i.e data is imbalanced and feature selection is not optimized.
+  </small>
 </p>
 
-<div id="tester" style="width: 900px; height: 450px"></div>
+<form action="/">
+  <div style="margin-top: 2rem">
+    <input type="submit" value="Back" class="button" />
+  </div>
+</form>
+<hr>
 
-<script>
-  TESTER = document.getElementById("tester");
-  var GRAPH = "{{ graphJSON | safe }}";
-
-  Plotly.plot(TESTER, GRAPH, {});
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+  PLOT = document.getElementById('plot');
+  var GRAPH = {{graphJSON|safe}} 
+  Plotly.plot(PLOT, GRAPH, {} );
 </script>
+
 {% endblock %}
